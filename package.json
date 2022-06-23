@@ -1,0 +1,28 @@
+{
+  "name": "gcloud-sls-starter",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "serverless.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.18.2",
+    "@babel/plugin-transform-runtime": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "babel-loader": "^8.2.5",
+    "babel-plugin-source-map-support": "^2.2.0",
+    "serverless-google-cloudfunctions": "*",
+    "serverless-webpack": "^5.7.1",
+    "webpack": "^5.73.0",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "mongoose": "^6.4.0",
+    "regenerator-runtime": "^0.13.9",
+    "source-map-support": "^0.5.21"
+  }
+}

@@ -1,0 +1,36 @@
+service: gcloud-sls-starter
+
+provider:
+  name: google
+  stage: develop
+  runtime: nodejs16
+  region: europe-west6
+  project: your-project
+  credentials: .deploy/gcp_credentials.json
+  environment: ${file(./env_vars.yml)}
+
+frameworkVersion: '3'
+
+plugins:
+  - serverless-webpack
+  - serverless-google-cloudfunctions
+
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.js' # Name of webpack configuration file
+    includeModules: true # Node modules configuration for packaging
+    packager: 'npm' # Packager that will be used to package your external modules
+
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+
+functions:
+  workerFunction:
+    handler: workerFunction
+    events:
+      - event:
+          eventType: providers/cloud.pubsub/eventTypes/topic.publish
+          resource: 'projects/${self:provider.project, ""}/topics/test-topic'
