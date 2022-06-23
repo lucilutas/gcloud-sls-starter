@@ -38,3 +38,9 @@
 
 * `npm install` or `yarn install`
 * `serverless deploy` or `sls deploy`
+
+## Testing
+
+```bash
+gcloud pubsub topics publish your-topic --message='{"data": "your data"}'
+```
