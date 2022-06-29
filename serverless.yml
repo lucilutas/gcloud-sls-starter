@@ -5,7 +5,7 @@ provider:
   stage: develop
   runtime: nodejs16
   region: europe-west6
-  project: your-project
+  project: techsylvania2022
   credentials: .deploy/gcp_credentials.json
   environment: ${file(./env_vars.yml)}
 
@@ -28,9 +28,21 @@ package:
     - .git/**
 
 functions:
-  workerFunction:
-    handler: workerFunction
+  decompositionServiceWorker:
+    handler: decompositionServiceWorker
     events:
       - event:
           eventType: providers/cloud.pubsub/eventTypes/topic.publish
-          resource: 'projects/${self:provider.project, ""}/topics/test-topic'
+          resource: 'projects/${self:provider.project, ""}/topics/decomposition-topic'
+  emailNotificationServiceWorker:
+    handler: emailNotificationServiceWorker
+    events:
+      - event:
+          eventType: providers/cloud.pubsub/eventTypes/topic.publish
+          resource: 'projects/${self:provider.project, ""}/topics/email-notification-topic'
+#  workerFunction:
+#    handler: workerFunction
+#    events:
+#      - event:
+#          eventType: providers/cloud.pubsub/eventTypes/topic.publish
+#          resource: 'projects/${self:provider.project, ""}/topics/test-topic'

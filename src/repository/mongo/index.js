@@ -1,19 +1,19 @@
-import mongoose from 'mongoose';
-import { config } from '../../config';
-import { userSchema } from './models/user';
+import mongoose from "mongoose";
+import { config } from "../../config";
+import { userSchema } from "./models/user";
 
 export const setupAndGetMongoConnection = async (cachedDb) => {
-    if (cachedDb) return Promise.resolve(cachedDb);
-    return mongoose.createConnection(config.mongoDB).asPromise();
+  if (cachedDb) return Promise.resolve(cachedDb);
+  return mongoose.createConnection(config.mongoDB).asPromise();
 };
 
 export const getMongoModels = (conn) => {
-    const User = conn.model('User', userSchema);
+  const User = conn.model("User", userSchema);
 
-    return { User };
+  return { User };
 };
 
 export default {
-    setupAndGetMongoConnection,
-    getMongoModels
-}
+  setupAndGetMongoConnection,
+  getMongoModels,
+};
