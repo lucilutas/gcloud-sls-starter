@@ -12,8 +12,3 @@ export const getMongoModels = (conn) => {
 
   return { User };
 };
-
-export default {
-  setupAndGetMongoConnection,
-  getMongoModels,
-};
